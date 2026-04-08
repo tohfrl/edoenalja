@@ -584,7 +584,6 @@
     <div class="form-wrap reveal">
       <form id="form-vragen" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="805fd567-2bfb-4ea4-a874-b66a9fe9e796" />
-        <input type="hidden" name="subject" value="Vraag ceremoniemeester — Edo & Alja" />
         <input type="hidden" name="from_name" value="Trouwwebsite Edo & Alja" />
         <input type="checkbox" name="botcheck" style="display:none" />
         <div class="field">
@@ -627,7 +626,6 @@
     <div class="form-wrap reveal">
       <form id="form-afmelding" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="b11da945-4be5-40ca-8a97-e260f375f346" />
-        <input type="hidden" name="subject" value="Afmelding — Edo & Alja" />
         <input type="hidden" name="from_name" value="Trouwwebsite Edo & Alja" />
         <input type="checkbox" name="botcheck" style="display:none" />
         <div class="field">
@@ -701,7 +699,20 @@
       const msg  = document.getElementById('ok-' + id);
       form.addEventListener('submit', async e => {
         e.preventDefault();
-        const res = await fetch(form.action, { method:'POST', body: new FormData(form), headers:{'Accept':'application/json'} });
+        const data = new FormData(form);
+
+        // Dynamische subject
+        if (id === 'afmelding') {
+          const voornaam   = data.get('voornaam')   || '';
+          const achternaam = data.get('achternaam') || '';
+          data.set('subject', 'Afmelding — ' + voornaam + ' ' + achternaam);
+        }
+        if (id === 'vragen') {
+          const naam = data.get('naam') || '';
+          data.set('subject', 'Vraag ceremoniemeester — ' + naam);
+        }
+
+        const res = await fetch(form.action, { method:'POST', body: data, headers:{'Accept':'application/json'} });
         if (res.ok) { form.reset(); msg.style.display = 'block'; }
       });
     });

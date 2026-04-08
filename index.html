@@ -241,6 +241,51 @@
       animation: fadeUp .9s ease forwards 1.1s;
     }
 
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      justify-content: center;
+      margin-top: 2.2rem;
+      opacity: 0;
+      animation: fadeUp .9s ease forwards 1s;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .75rem 1.6rem;
+      border-radius: 100px;
+      font-family: 'Jost', sans-serif;
+      font-size: .72rem;
+      font-weight: 400;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s, transform .15s, border-color .25s;
+    }
+
+    .hero-btn:hover { transform: translateY(-2px); }
+
+    .hero-btn--primary {
+      background: var(--roest);
+      color: var(--creme);
+      border: 1px solid transparent;
+    }
+    .hero-btn--primary:hover { background: #8a3d00; }
+
+    .hero-btn--secondary {
+      background: transparent;
+      color: var(--creme);
+      border: 1px solid rgba(243,231,216,.3);
+    }
+    .hero-btn--secondary:hover { border-color: rgba(243,231,216,.6); background: rgba(243,231,216,.05); }
+
+    @media (max-width: 420px) {
+      .hero-btn { width: 100%; justify-content: center; }
+    }
+
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -487,6 +532,17 @@
 
       <p class="hero-date">2 oktober 2026</p>
 
+      <div class="hero-btns">
+        <a href="#vraag" class="hero-btn hero-btn--primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 L7 13 M2 8 L7 13 L12 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Vraag aan de ceremoniemeester
+        </a>
+        <a href="#afmelding" class="hero-btn hero-btn--secondary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 L7 13 M2 8 L7 13 L12 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ik kan er niet bij zijn
+        </a>
+      </div>
+
       <svg class="botanical-bottom" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity=".4" stroke="var(--salie)" stroke-width="1" fill="none">
           <path d="M 60 100 Q 80 60 120 45" stroke-linecap="round"/>
@@ -512,49 +568,6 @@
   <div class="sep reveal">
     <div class="sep-line"></div>
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <circle cx="11" cy="11" r="3" fill="var(--salie)" opacity=".6"/>
-      <path d="M11 2 L11 5 M11 17 L11 20 M2 11 L5 11 M17 11 L20 11" stroke="var(--salie)" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-      <path d="M4.9 4.9 L7 7 M15 15 L17.1 17.1 M17.1 4.9 L15 7 M7 15 L4.9 17.1" stroke="var(--salie)" stroke-width="1" stroke-linecap="round" opacity=".3"/>
-    </svg>
-    <div class="sep-line"></div>
-  </div>
-
-  <section>
-    <p class="section-tag reveal">Je kunt er helaas niet bij zijn</p>
-    <h2 class="section-title reveal">Laat het ons weten</h2>
-    <p class="section-body reveal">
-      We begrijpen het — het leven is soms druk. Laat hieronder weten dat je er niet bij kunt zijn, zodat we in gedachten aan je kunnen denken.
-    </p>
-    <div class="form-wrap reveal">
-      <form id="form-afmelding" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="b11da945-4be5-40ca-8a97-e260f375f346" />
-        <input type="hidden" name="subject" value="Afmelding — Edo & Alja" />
-        <input type="hidden" name="from_name" value="Trouwwebsite Edo & Alja" />
-        <input type="checkbox" name="botcheck" style="display:none" />
-        <div class="field">
-          <label for="af-voornaam">Voornaam</label>
-          <input type="text" id="af-voornaam" name="voornaam" placeholder="Jouw voornaam" required />
-        </div>
-        <div class="field">
-          <label for="af-achternaam">Achternaam</label>
-          <input type="text" id="af-achternaam" name="achternaam" placeholder="Jouw achternaam" required />
-        </div>
-        <div class="field">
-          <label for="af-email">E-mailadres</label>
-          <input type="email" id="af-email" name="email" placeholder="jouw@email.nl" required />
-        </div>
-        <button type="submit" class="btn">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7 L13 7 M8 3 L13 7 L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Versturen
-        </button>
-        <div class="success-msg" id="ok-afmelding">Bedankt — we denken op die dag aan je. 🌿</div>
-      </form>
-    </div>
-  </section>
-
-  <div class="sep reveal">
-    <div class="sep-line"></div>
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
       <circle cx="11" cy="11" r="3" fill="var(--roze)" opacity=".5"/>
       <path d="M11 2 L11 5 M11 17 L11 20 M2 11 L5 11 M17 11 L20 11" stroke="var(--roze)" stroke-width="1.2" stroke-linecap="round" opacity=".4"/>
       <path d="M4.9 4.9 L7 7 M15 15 L17.1 17.1 M17.1 4.9 L15 7 M7 15 L4.9 17.1" stroke="var(--roze)" stroke-width="1" stroke-linecap="round" opacity=".25"/>
@@ -562,7 +575,7 @@
     <div class="sep-line"></div>
   </div>
 
-  <section>
+  <section id="vraag">
     <p class="section-tag reveal">Heb je een vraag?</p>
     <h2 class="section-title reveal">Stel hem gerust</h2>
     <p class="section-body reveal">
@@ -591,6 +604,49 @@
           Vraag versturen
         </button>
         <div class="success-msg" id="ok-vragen">Ontvangen — de ceremoniemeester reageert zo snel mogelijk. 🌿</div>
+      </form>
+    </div>
+  </section>
+
+  <div class="sep reveal">
+    <div class="sep-line"></div>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="3" fill="var(--salie)" opacity=".6"/>
+      <path d="M11 2 L11 5 M11 17 L11 20 M2 11 L5 11 M17 11 L20 11" stroke="var(--salie)" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+      <path d="M4.9 4.9 L7 7 M15 15 L17.1 17.1 M17.1 4.9 L15 7 M7 15 L4.9 17.1" stroke="var(--salie)" stroke-width="1" stroke-linecap="round" opacity=".3"/>
+    </svg>
+    <div class="sep-line"></div>
+  </div>
+
+  <section id="afmelding">
+    <p class="section-tag reveal">Je kunt er helaas niet bij zijn</p>
+    <h2 class="section-title reveal">Laat het ons weten</h2>
+    <p class="section-body reveal">
+      We begrijpen het — het leven is soms druk. Laat hieronder weten dat je er niet bij kunt zijn.
+    </p>
+    <div class="form-wrap reveal">
+      <form id="form-afmelding" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="b11da945-4be5-40ca-8a97-e260f375f346" />
+        <input type="hidden" name="subject" value="Afmelding — Edo & Alja" />
+        <input type="hidden" name="from_name" value="Trouwwebsite Edo & Alja" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+        <div class="field">
+          <label for="af-voornaam">Voornaam</label>
+          <input type="text" id="af-voornaam" name="voornaam" placeholder="Jouw voornaam" required />
+        </div>
+        <div class="field">
+          <label for="af-achternaam">Achternaam</label>
+          <input type="text" id="af-achternaam" name="achternaam" placeholder="Jouw achternaam" required />
+        </div>
+        <div class="field">
+          <label for="af-email">E-mailadres</label>
+          <input type="email" id="af-email" name="email" placeholder="jouw@email.nl" required />
+        </div>
+        <button type="submit" class="btn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7 L13 7 M8 3 L13 7 L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Versturen
+        </button>
+        <div class="success-msg" id="ok-afmelding">Jammer dat je er niet bij kunt zijn — bedankt voor het doorgeven. 🌿</div>
       </form>
     </div>
   </section>

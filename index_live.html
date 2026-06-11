@@ -520,8 +520,8 @@
     .dresscode-section .section-intro { color: rgba(243,231,216,.6); }
 
     .swatches {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: .8rem;
       margin-top: 2.5rem;
       background: rgba(243,231,216,.07);
@@ -530,9 +530,11 @@
       padding: 1.8rem;
     }
 
+    @media (min-width: 681px) {
+      .swatches { grid-template-columns: repeat(8, 1fr); }
+    }
+
     .swatch {
-      flex: 1;
-      min-width: 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
